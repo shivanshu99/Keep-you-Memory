@@ -4,10 +4,11 @@ import mongoose from "mongoose";
 import UserModal from "../models/user.js";
 import PostMessage from "../models/postMessage.js";
 import { createRequire } from "module";
+require("dotenv").config();
 const require = createRequire(import.meta.url);
 const sgMail = require("@sendgrid/mail");
 const emailSenderApi =
-	"You API KEY";
+	`${process.env.sgpass}`;
 const router = express.Router();
 sgMail.setApiKey(emailSenderApi);
 export const getPosts = async (req, res) => {

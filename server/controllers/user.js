@@ -5,9 +5,9 @@ import { createRequire } from "module";
 import express from "express";
 const require = createRequire(
     import.meta.url);
+require("dotenv").config();
 const sgMail = require("@sendgrid/mail");
-const emailSenderApi =
-    "YOUR API KEY";
+const emailSenderApi = `${process.env.sgpass}`;
 const router = express.Router();
 sgMail.setApiKey(emailSenderApi);
 const secret = "test";

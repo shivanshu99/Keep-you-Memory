@@ -15,7 +15,7 @@ import { signin, signup } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
-
+require("dotenv").config();
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const SignUp = () => {
@@ -79,7 +79,7 @@ const SignUp = () => {
 
   return (
 		<Container component="main" maxWidth="xs">
-			<NotificationContainer/>
+			<NotificationContainer />
 			<Paper className={classes.paper} elevation={3}>
 				<Avatar className={classes.avatar}>
 					<LockOutlinedIcon />
@@ -138,7 +138,7 @@ const SignUp = () => {
 						{isSignup ? "Sign Up" : "Sign In"}
 					</Button>
 					<GoogleLogin
-						clientId="GOOGLE API KEY"
+						clientId={process.env.gApi}
 						render={renderProps => (
 							<Button
 								className={classes.googleButton}

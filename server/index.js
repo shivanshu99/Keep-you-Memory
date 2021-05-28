@@ -6,7 +6,7 @@ import cors from 'cors';
 
 import postRoutes from './routes/posts.js';
 import userRouter from "./routes/user.js";
-
+require("dotenv").config();
 const app = express();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
@@ -16,7 +16,8 @@ app.use(cors());
 app.use('/posts', postRoutes);
 app.use("/user", userRouter);
 
-const CONNECTION_URL = "mongodb://localhost:27017/memoey";
+const CONNECTION_URL =
+	`mongodb+srv://shivanshu:${process.env.pass}@cluster0.rft4g.mongodb.net/keep_memory?retryWrites=true&w=majority`;
 const PORT = process.env.PORT|| 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
